@@ -17,3 +17,7 @@ window.addEventListener("load", () => {
     food.setNewFood();
     game.turnOnControls();
 });
+
+document.querySelector(".play").addEventListener("click", () => {
+    window.location.reload();
+});

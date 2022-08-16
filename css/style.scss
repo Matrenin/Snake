@@ -45,4 +45,32 @@ td {
 #message {
     color: orange;
     font-size: 24px;
+    margin: 30px;
+}
+
+input {
+    width: 50px;
+}
+
+.settings {
+    margin: 30px 0;
+
+    & label {
+        font-size: 18px;
+        color: #fff;
+
+        &:nth-child(2) {
+            margin-left: 20px;
+        }
+    }
+
+    & input {
+        margin:0 12px;
+        height: 22px;
+        border: none;
+
+        &:focus {
+            outline: 1px solid #00d021;
+        }
+    }
 }

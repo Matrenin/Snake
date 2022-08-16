@@ -21,7 +21,8 @@ class Game {
     start() {
         if (this.status.isPaused()) {
             this.status.setPlaying();
-            this.tickIdentifier = setInterval(this.doTick.bind(this), 1000 / this.settings.speed);  //?
+            this.settings.init({speed: this.settings.selectSpeed(), winLength: this.settings.selectWinLength()});
+            this.tickIdentifier = setInterval(this.doTick.bind(this), 1000 / this.settings.speed);
         }
     }
 
@@ -35,6 +36,9 @@ class Game {
     doTick() {
         this.snake.performStep();
         if (this.isGameLost()) {
+            return;
+        }
+        if (this.gameOver()) {
             return;
         }
         if (this.isGameWon()) {
@@ -81,6 +85,15 @@ class Game {
     }
 
     setMessage(text) {
-        this.messageEl.textContent = text;
+        this.messageEl.innerHTML = text;
+    }
+
+    gameOver() {
+        if (this.board.isNextStepToSnake(this.snake.body[0])) {
+            clearInterval(this.tickIdentifier);
+            this.setMessage("Вы проиграли");
+            return true;
+        }
+        return false;
     }
 }

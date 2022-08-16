@@ -12,8 +12,8 @@ class Settings {
         }
         this.colsCount = defaultParams.colsCount;
 
-        if (defaultParams.speed < 1 || defaultParams.speed > 100) {
-            throw new Error('Неверные настройки, значение speed должно быть в диапазоне [1, 100].');
+        if (defaultParams.speed < 1 || defaultParams.speed > 20) {
+            throw new Error('Неверные настройки, значение speed должно быть в диапазоне [1, 20].');
         }
         this.speed = defaultParams.speed;
 
@@ -21,5 +21,17 @@ class Settings {
             throw new Error('Неверные настройки, значение winLength должно быть в диапазоне [5, 50].');
         }
         this.winLength = defaultParams.winLength;
+    }
+
+    selectSpeed() {
+        let speedValue = document.querySelector("#speed").value;
+        speedValue = +speedValue;
+        return speedValue;
+    }
+
+    selectWinLength() {
+        let winLengthValue = document.querySelector("#winLength").value;
+        winLengthValue = +winLengthValue;
+        return winLengthValue;
     }
 }

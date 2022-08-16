@@ -61,4 +61,9 @@ class Board {
         let nextCell = this.getCellEl(nextCellCoords.x, nextCellCoords.y);
         return nextCell === null;
     }
+
+    isNextStepToSnake(nextCellCoords) {
+        let nextCell = this.getCellEl(nextCellCoords.x, nextCellCoords.y);
+        return nextCell.classList.contains("snakeBody");
+    }
 }
